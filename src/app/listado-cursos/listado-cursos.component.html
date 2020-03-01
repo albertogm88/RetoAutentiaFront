@@ -1,0 +1,22 @@
+
+<div class="container-fluid">
+  <h2>Catalogo cursos</h2>
+  <div class="row">
+    <p class="col-md-4 col-sm-4 col-xs-4"><b>Título</b></p>
+    <p class="col-md-4 col-sm-4 col-xs-4"><b>Profesor</b></p>
+    <p class="col-md-3 col-sm-3 col-xs-3"><b>Nivel</b></p>
+    <p class="col-md-1 col-sm-1 col-xs-1"><b>Horas</b></p>
+  </div>
+  <div class="row" *ngFor='let curso of cursos'>
+      <p class="col-md-4 col-sm-4 col-xs-4">{{ curso.titulo }}</p>
+      <p class="col-md-4 col-sm-4 col-xs-4">{{ curso.profesor.nombre }} {{ curso.profesor.apellidos }}</p>
+      <p class="col-md-3 col-sm-3 col-xs-3">{{ curso.nivel.nombre }}</p>
+      <p class="col-md-1 col-sm-1 col-xs-1">{{ curso.numHoras }}</p>
+  </div>
+  <div class="row">
+    <ngb-pagination [collectionSize]="totalItems"
+          [pageSize]="itemsPerPage"
+          [(page)]="page" aria-label="Default pagination"
+          (pageChange)="cargarPagina($event)"></ngb-pagination>
+  </div>
+</div>

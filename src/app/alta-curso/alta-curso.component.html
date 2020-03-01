@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <h2>Añadir curso</h2>
+  <form #cursoForm="ngForm" (ngSubmit)="onSubmit(cursoForm)">
+    <div>
+      <label for="activo">Activo</label>&nbsp;
+      <input id="activo" type="checkbox" #activo [(ngModel)]="CursoForm.activo" name="Activo" required>
+    </div>
+
+    <div>
+      <label for="profesor">Profesor</label>&nbsp;
+      <select id="profesor" #profesor [(ngModel)]="CursoForm.profesor" name="Profesor" required>
+        <option *ngFor='let profesor of profesores; let i = index' [value]="profesores[i].id">
+          {{ profesores[i].nombre }} {{ profesores[i].apellidos }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label for="titulo">Título</label>&nbsp;
+      <input id="titulo" matInput placeholder="Titulo" #titulo maxlength="60" [(ngModel)]="CursoForm.titulo" name="Titulo" required>
+    </div>
+
+    <div>
+      <label for="nivel">Nivel</label>&nbsp;
+      <select id="nivel" #nivel [(ngModel)]="CursoForm.nivel" name="Nivel" required>
+        <option *ngFor='let nivel of niveles; let i = index' [value]="niveles[i].id">
+          {{ niveles[i].nombre }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label for="horas">Horas</label>&nbsp;
+      <input id="horas" matInput placeholder="Horas" #horas maxlength="10" [(ngModel)]="CursoForm.horas" name="Horas" required>
+    </div>
+
+    <div>
+      <label for="termario">Temario</label>&nbsp;
+      <input id="temario" matInput placeholder="Temario" #temario [(ngModel)]="CursoForm.temario" name="Temario">
+    </div>
+
+    <button class="button" [disabled]="!cursoForm.form.valid">Añadir</button>
+  </form>
+</div>
